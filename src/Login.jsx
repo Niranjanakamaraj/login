@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./App.jsx";
 
+const DUMMY_EMAIL = "test@gmail.com";
+const DUMMY_PASSWORD = "123456";
+
 export default function Login() {
   const navigate = useNavigate();
   const { setUser } = useAuth();
