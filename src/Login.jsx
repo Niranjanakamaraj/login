@@ -17,10 +17,7 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const dummyEmail = process.env.REACT_APP_DUMMY_EMAIL;
-    const dummyPassword = process.env.REACT_APP_DUMMY_PASSWORD;
-
-    if (email.trim() === dummyEmail && password.trim() === dummyPassword) {
+    if (email.trim() === DUMMY_EMAIL && password.trim() === DUMMY_PASSWORD) {
       setUser({ name, email });
       navigate("/accounts");
     } else {
