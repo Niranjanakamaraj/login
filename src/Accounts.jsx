@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "./App.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function Accounts() {
   const { user, setUser } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Google Tag script injection
+    const script1 = document.createElement("script");
+    script1.async = true;
+    script1.src = "https://www.googletagmanager.com/gtag/js?id=G-01CS90BQJ5";
+
+    const script2 = document.createElement("script");
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-01CS90BQJ5');
+    `;
+
+    document.head.appendChild(script1);
+    document.head.appendChild(script2);
+
+    return () => {
+      document.head.removeChild(script1);
+      document.head.removeChild(script2);
+    };
+  }, []);
 
   const handleLogout = () => {
     setUser(null);
